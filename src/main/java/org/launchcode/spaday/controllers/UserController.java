@@ -1,5 +1,6 @@
 package org.launchcode.spaday.controllers;
 
+import org.launchcode.spaday.data.UserData;
 import org.launchcode.spaday.models.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,15 +20,15 @@ public class UserController {
 
     @PostMapping("add")
     public String processAddUserForm(Model model, @ModelAttribute User user, String verify){
-        //User newUser = new User(username, email, password);
-        //model.addAttribute("title", "Add User");
-
-        if (verify.equals(user.getPassword())){
-            return "user/index";
-        }
-        else {
+        model.addAttribute("user", user);
+        if (!verify.equals(user.getPassword())) {
+            model.addAttribute("error", "Passwords should match!");
             return "user/add";
         }
+        UserData.addUser(user);
+        model.addAttribute("users", UserData.getAll());
+        return "user/index";
+
     }
 
 }

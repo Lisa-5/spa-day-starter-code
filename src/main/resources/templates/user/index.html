@@ -5,7 +5,11 @@
     <title>Welcome</title>
 </head>
 <body>
-<p th:text="Welcome ${user.getUsername()}!">default welcome message</p>
+<h3 th:text="|Welcome, ${user.username}!|">default welcome message</h3>
+<a th:href="@{/}">Service Selection</a>
+<th:block th:each="user : ${users}">
+    <p th:text="|${user.username}, ${user.email}|"></p>
+</th:block>
 
 </body>
 </html>

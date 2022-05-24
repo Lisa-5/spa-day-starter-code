@@ -4,15 +4,21 @@ import java.util.Objects;
 
 public class User {
 
+    private int id;
+    private static int nextId = 1;
+
     private String username;
     private String email;
     private String password;
 
     public User(String username, String email, String password) {
+        this.id = nextId;
         this.username = username;
         this.email = email;
         this.password = password;
+        nextId++;
     }
+
 
     public String getUsername() {
         return username;
@@ -36,6 +42,18 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getNextId() {
+        return nextId;
+    }
+
+    public void setNextId(int nextId) {
+        this.nextId = nextId;
     }
 
     @Override
