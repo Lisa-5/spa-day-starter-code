@@ -31,4 +31,16 @@ public class UserController {
 
     }
 
+    @GetMapping("email")
+    public String displayEmailForm(Model model){
+        model.addAttribute("users", UserData.getAll());
+        return "user/email";
+    }
+
+    @PostMapping("email")
+    public String processEmailForm(Model model){
+        model.addAttribute("users", UserData.getAll());
+        return "user/email";
+    }
+
 }
