@@ -12,7 +12,7 @@
         <th:block th:each="user : ${users}">
             <tr>
             <td th:text="|Username: ${user.username}|" ></td>
-            <td><a th:href="@{/user/email}">User Email</a></td>
+            <td><a th:href="@{|/user/detail/${user.id}|}">User Details</a></td>
             </tr>
         </th:block>
     </table>
