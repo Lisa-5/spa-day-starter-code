@@ -33,15 +33,9 @@ public class UserController {
     }
 
     @GetMapping("detail/{userId}")
-    public String displayEmailForm(Model model, @PathVariable Integer userId){
+    public String displayEmailForm(Model model, @PathVariable int userId){
         model.addAttribute("user", UserData.getById(userId));
         return "user/detail";
     }
-
-//    @PostMapping("email")
-//    public String processEmailForm(Model model){
-//        model.addAttribute("users", UserData.getAll());
-//        return "user/detail";
-//    }
 
 }
